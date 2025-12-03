@@ -1,21 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000; /* pure black base */
+  --foreground: #e6ffff; /* very light cyan-ish text for contrast */
+  --muted-foreground: #9ca3a8; /* muted text for secondary content */
+  --accent: #00e5ff; /* main cyan accent */
+  /* width of the fixed left navbar (keeps in sync with tailwind w-28 = 7rem) */
+  --sidebar-width: 7rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #e6ffff;
   }
 }
 
@@ -24,3 +29,613 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Hero grid background: subtle lines + soft purple glows */
+.hero-grid {
+  background-color: #000000; /* deep black */
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+    radial-gradient(ellipse at 5% 10%, rgba(0,229,255,0.06), transparent 15%),
+    radial-gradient(ellipse at 95% 5%, rgba(0,229,255,0.04), transparent 12%);
+  background-size: 80px 80px, 80px 80px, cover, cover;
+  background-position: 0 0, 0 0, left top, right top;
+  z-index: 0;
+  position: absolute;
+}
+
+/* Hero orb decorative styles */
+.hero-orb {
+  width: 520px;
+  height: 520px;
+  display: block;
+  filter: blur(6px) contrast(115%);
+  opacity: 0.95;
+  transform-origin: center;
+  animation: orb-rotate 18s linear infinite;
+}
+
+/* Navigation helper styles (use CSS variables for consistent theming) */
+.nav-link {
+  color: var(--muted-foreground);
+  transition: color 200ms ease, transform 200ms ease, filter 200ms ease;
+}
+.nav-link:hover {
+  color: var(--accent);
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(0,229,255,0.25));
+}
+.nav-icon {
+  color: var(--foreground);
+  transition: color 220ms ease, filter 220ms ease;
+}
+.nav-icon:hover {
+  color: var(--accent);
+  filter: drop-shadow(0 0 10px rgba(0,229,255,0.35));
+}
+
+@keyframes orb-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Diagonal ray animation behind the hero */
+.rays {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5; /* between grid (0) and content (z-10) */
+}
+.rays .ray {
+  display: block;
+  position: absolute;
+  top: -18%;
+  height: 140%;
+  width: 6%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,229,255,0.22));
+  filter: blur(8px);
+  opacity: 0.12;
+  transform-origin: center;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  border-radius: 2px;
+  transform: rotate(-18deg);
+  animation: rayShift 20s linear infinite;
+}
+
+/* Stagger positions, sizes, durations and delays for variety */
+.rays .ray:nth-child(1) { left: -12%; width:4.5%; animation-duration:24s; animation-delay:-2s; opacity:0.08; }
+.rays .ray:nth-child(2) { left: 4%;   width:5.5%; animation-duration:28s; animation-delay:-6s; opacity:0.12; }
+.rays .ray:nth-child(3) { left: 18%;  width:6.5%; animation-duration:22s; animation-delay:-4s; opacity:0.14; }
+.rays .ray:nth-child(4) { left: 32%;  width:5.2%; animation-duration:26s; animation-delay:-8s; opacity:0.12; }
+.rays .ray:nth-child(5) { left: 48%;  width:6.8%; animation-duration:30s; animation-delay:-10s; opacity:0.10; }
+.rays .ray:nth-child(6) { left: 64%;  width:5.0%; animation-duration:20s; animation-delay:-12s; opacity:0.12; }
+.rays .ray:nth-child(7) { left: 78%;  width:6.0%; animation-duration:27s; animation-delay:-14s; opacity:0.14; }
+.rays .ray:nth-child(8) { left: 92%;  width:4.2%; animation-duration:23s; animation-delay:-16s; opacity:0.08; }
+
+@keyframes rayShift {
+  0% {
+    transform: translateX(-18%) rotate(-18deg);
+    opacity: 0.02;
+  }
+  45% {
+    transform: translateX(12%) rotate(-18deg);
+    opacity: 0.12;
+  }
+  100% {
+    transform: translateX(-18%) rotate(-18deg);
+    opacity: 0.02;
+  }
+}
+
+/* Debug helper: make rays obviously visible while debugging layout/stacking.
+   Remove `.debug` from the markup or delete this block when finished. */
+.rays.debug .ray {
+  background: rgba(255, 0, 0, 0.25) !important;
+  mix-blend-mode: normal !important;
+  opacity: 0.8 !important;
+  filter: none !important;
+  transform: rotate(-18deg) translateX(0) !important;
+}
+
+/* small responsive tweaks */
+@media (max-width: 900px) {
+  .hero-orb { width: 360px; height: 360px; right: 2rem; }
+  h1 { font-size: 3.2rem; }
+}
+
+/* Button utilities and animations for hero CTAs */
+.btn-ghost {
+  transition: transform 260ms ease, box-shadow 260ms ease, color 200ms ease;
+  will-change: transform, box-shadow;
+}
+.btn-ghost:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 50px rgba(0,229,255,0.09);
+}
+.btn-cta {
+  background-image: linear-gradient(90deg, var(--accent), #00bcd4);
+  transition: transform 260ms ease, box-shadow 260ms ease, background-position 600ms linear;
+  background-size: 200% 100%;
+  background-position: 0% 0%;
+}
+.btn-cta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 60px rgba(0,188,212,0.12);
+  background-position: 100% 0%;
+}
+
+/* small arrow slide for visual polish */
+.btn-arrow {
+  display: inline-block;
+  transform: translateX(0);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1);
+}
+.group:hover .btn-arrow,
+.group:focus .btn-arrow {
+  transform: translateX(6px);
+}
+
+/* entrance animation for hero CTAs */
+.fade-up {
+  animation: fadeUp 520ms cubic-bezier(.2,.9,.2,1) both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* GENERAL TEXT REVEAL (stagger-friendly) */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: textFadeUp 600ms cubic-bezier(.2,.9,.2,1) both;
+}
+@keyframes textFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* helper delays for simple staggering */
+.reveal-delay-0 { animation-delay: 0ms; }
+.reveal-delay-1 { animation-delay: 120ms; }
+.reveal-delay-2 { animation-delay: 260ms; }
+.reveal-delay-3 { animation-delay: 420ms; }
+.reveal-delay-4 { animation-delay: 580ms; }
+
+/* subtle letter-by-letter typewriter for short greetings */
+.typewriter {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid rgba(255,255,255,0.12);
+  animation: typing 2200ms steps(22, end) forwards, blinkCaret 900ms step-end infinite;
+  max-width: 0ch; /* starts hidden, typing anim will reveal */
+}
+/* final width when animation ends: adjust to fit the content (approx 50 ch) */
+@keyframes typing {
+  from { max-width: 0ch; }
+  to   { max-width: 50ch; }
+}
+@keyframes blinkCaret {
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(255,255,255,0.7); }
+}
+
+/* Fallback: if user prefers reduced motion, disable animations */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .typewriter, .fade-up { animation: none !important; opacity: 1 !important; transform: none !important; border-right: none !important; }
+}
+
+/* Detail Cards Styling */
+.detail-card {
+  position: relative;
+  transition: transform 400ms cubic-bezier(0.2, 0.9, 0.2, 1), 
+              box-shadow 400ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.detail-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(139, 92, 246, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+}
+
+.detail-card:hover::before {
+  opacity: 1;
+}
+
+.detail-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 229, 255, 0.08);
+}
+
+/* Smooth card entrance animation */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-card {
+  animation: cardFadeIn 600ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+/* Stagger delays for cards */
+.detail-card:nth-child(1) { animation-delay: 100ms; }
+.detail-card:nth-child(2) { animation-delay: 200ms; }
+.detail-card:nth-child(3) { animation-delay: 300ms; }
+
+/* Enhanced floating animations for tech stack boxes with smooth easing */
+@keyframes float-1 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-8px) translateX(3px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-14px) translateX(5px) rotate(0deg);
+    opacity: 0.95;
+  }
+  75% {
+    transform: translateY(-8px) translateX(3px) rotate(-1deg);
+  }
+}
+
+@keyframes float-2 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-10px) translateX(-4px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-18px) translateX(-7px) rotate(0deg);
+    opacity: 0.95;
+  }
+  75% {
+    transform: translateY(-10px) translateX(-4px) rotate(1deg);
+  }
+}
+
+@keyframes float-3 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-6px) translateX(6px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-12px) translateX(10px) rotate(0deg);
+    opacity: 0.95;
+  }
+  75% {
+    transform: translateY(-6px) translateX(6px) rotate(-1deg);
+  }
+}
+
+@keyframes float-4 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-9px) translateX(-2px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-16px) translateX(-4px) rotate(0deg);
+    opacity: 0.95;
+  }
+  75% {
+    transform: translateY(-9px) translateX(-2px) rotate(1deg);
+  }
+}
+
+/* Apply animations with smooth easing and staggered timing */
+.animate-float-1 {
+  animation: float-1 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.animate-float-2 {
+  animation: float-2 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-float-3 {
+  animation: float-3 4.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation-delay: 1s;
+}
+
+.animate-float-4 {
+  animation: float-4 5.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation-delay: 1.5s;
+}
+
+/* Tech box styling with subtle shadow and glow effects */
+.tech-box {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.tech-box:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 229, 255, 0.15);
+  z-index: 10;
+}
+
+/* Resume card animations */
+@keyframes resume-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(2deg);
+  }
+}
+
+.resume-float {
+  animation: resume-float 3s ease-in-out infinite;
+}
+
+/* Animated shine effect for resume card */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.resume-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.1),
+    rgba(139, 92, 246, 0.2),
+    rgba(99, 102, 241, 0.1),
+    transparent
+  );
+  animation: shine 3s ease-in-out;
+}
+
+/* Pulse animation for status indicator */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0);
+  }
+}
+
+/* Gradient text animation */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+/* Animated particles for about card */
+.particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.6), rgba(6, 182, 212, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float-particle 20s infinite ease-in-out;
+}
+
+.particle-1 {
+  width: 4px;
+  height: 4px;
+  top: 20%;
+  left: 15%;
+  animation-duration: 8s;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  width: 6px;
+  height: 6px;
+  top: 60%;
+  left: 70%;
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+
+.particle-3 {
+  width: 3px;
+  height: 3px;
+  top: 40%;
+  right: 20%;
+  animation-duration: 12s;
+  animation-delay: 4s;
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(10px, -15px) scale(1.2);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-5px, -25px) scale(0.8);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(-15px, -10px) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+/* Slow pulse animation for decorative lines */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleX(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+  transform-origin: left;
+}
+
+/* Combined design card animations */
+@keyframes number-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(6, 182, 212, 0));
+  }
+  50% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.3));
+  }
+}
+
+.animate-number-pulse {
+  animation: number-pulse 3s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+.animate-dot-pulse {
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes line-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.05);
+  }
+}
+
+.animate-line-pulse {
+  animation: line-pulse 3s ease-in-out infinite;
+  transform-origin: left;
+}
+
+/* Projects card animations */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite ease-in-out;
+}
+
+@keyframes progress-1 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 75%;
+  }
+}
+
+@keyframes progress-2 {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 60%;
+  }
+}
+
+.animate-progress-1 {
+  animation: progress-1 2s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.animate-progress-2 {
+  animation: progress-2 2s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
