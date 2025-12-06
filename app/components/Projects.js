@@ -13,24 +13,24 @@ const ProjectCard = ({ project, index }) => {
       transition={{ duration: 0.6, delay: index * 0.2 }}
       className="min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-20"
     >
-      <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="max-w-7xl w-full grid lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-16 items-center">
         {/* Left Content */}
-        <div className="space-y-8">
+        <div className="space-y-6">
           {/* Project Number */}
           <div className="flex items-center gap-4">
             <div className="h-0.5 w-20 bg-linear-to-r from-accent to-transparent"></div>
-            <span className="text-6xl md:text-7xl font-bold text-accent opacity-60">
+            <span className="text-6xl md:text-5xl lg:text-7xl font-bold text-accent opacity-60">
               {String(index + 1).padStart(2, '0')}
             </span>
           </div>
 
           {/* Title */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h2 className="text-4xl md:text-2xl lg:text-4xl font-bold leading-tight">
             {project.title}
           </h2>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+          <p className="text-lg md:text-sm lg:text-l text-muted-foreground leading-relaxed">
             {project.description}
           </p>
 
@@ -39,21 +39,21 @@ const ProjectCard = ({ project, index }) => {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-accent text-black font-semibold text-lg rounded-lg hover:shadow-xl hover:shadow-accent/20 transition-all duration-300"
+            className="group inline-flex items-center gap-3 px-6 py-3 bg-accent text-black font-semibold text-base md:text-sm lg:text-lg rounded-lg hover:shadow-xl hover:shadow-accent/20 transition-all duration-300"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
             View project
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+            <ArrowRight className="w-4 h-4 md:w-4 md:h-4 lg:w-5 lg:h-5 group-hover:translate-x-2 transition-transform duration-300" />
           </motion.a>
 
           {/* Tech Stack Tags */}
           {project.tags && (
-            <div className="flex flex-wrap gap-3 pt-4">
+            <div className="flex flex-wrap gap-2 pt-2">
               {project.tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-foreground/80 hover:border-accent/50 transition-colors duration-300"
+                  className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs md:text-[0.7rem] lg:text-sm text-foreground/80 hover:border-accent/50 transition-colors duration-300"
                 >
                   {tag}
                 </span>
@@ -148,7 +148,7 @@ const Projects = () => {
         {/* Section Header */}
         <div className="pt-20 pb-10 px-6 md:px-12 lg:px-20 text-center overflow-hidden">
           <motion.h2 
-            className="text-5xl md:text-6xl lg:text-7xl font-bold inline-flex flex-wrap justify-center gap-4"
+            className="text-5xl md:text-5xl lg:text-7xl font-bold inline-flex flex-wrap justify-center gap-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

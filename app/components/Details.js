@@ -20,7 +20,7 @@ const Details = () => {
           
           {/* Row 1 - Three small cards at top */}
           {/* Card 1 - Animated About Card */}
-          <div className="detail-card md:col-span-3 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm p-6 hover:border-cyan-500/30 transition-all duration-500 group">
+          <div className="detail-card md:col-span-3 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm p-4 md:p-5 lg:p-6 hover:border-cyan-500/30 transition-all duration-500 group">
             {/* Animated particle background */}
             <div className="absolute inset-0 overflow-hidden opacity-20">
               <div className="particle particle-1"></div>
@@ -43,10 +43,10 @@ const Details = () => {
                 <div className="inline-flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></div>
                   <div className="w-2 h-2 rounded-full bg-cyan-400 absolute"></div>
-                  <span className="text-cyan-400 text-[10px] font-bold tracking-widest">ABOUT</span>
+                  <span className="text-cyan-400 text-[10px] font-bold tracking-widest card-subtitle">ABOUT</span>
                 </div>
                 
-                <p className="text-white text-base md:text-lg font-bold leading-tight group-hover:text-cyan-50 transition-colors duration-300">
+                <p className="text-white text-sm md:text-sm lg:text-lg font-bold leading-tight group-hover:text-cyan-50 transition-colors duration-300">
                   Tech enthusiast with a passion for development.
                 </p>
               </div>
@@ -68,7 +68,7 @@ const Details = () => {
           <a 
             href="/Chirag-Resume.pdf" 
             download="Chirag-Resume.pdf"
-            className="detail-card md:col-span-3 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/40 via-slate-900/50 to-slate-950/50 backdrop-blur-sm p-6 hover:border-cyan-400/50 transition-all duration-500 group cursor-pointer"
+            className="detail-card md:col-span-3 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/40 via-slate-900/50 to-slate-950/50 backdrop-blur-sm p-4 md:p-5 lg:p-6 hover:border-cyan-400/50 transition-all duration-500 group cursor-pointer"
           >
             {/* Animated background gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -84,22 +84,22 @@ const Details = () => {
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-2 px-2 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full">
                   <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span>
-                  <span className="text-cyan-300 text-[10px] font-medium tracking-wide">AVAILABLE</span>
+                  <span className="text-cyan-300 text-[10px] font-medium tracking-wide card-subtitle">AVAILABLE</span>
                 </div>
                 
-                <h4 className="text-white text-base md:text-lg font-bold leading-tight group-hover:text-cyan-100 transition-colors duration-300">
+                <h4 className="text-white text-sm md:text-sm lg:text-lg font-bold leading-tight group-hover:text-cyan-100 transition-colors duration-300">
                   Resume
                 </h4>
                 
-                <p className="text-gray-400 text-xs leading-relaxed">
+                <p className="text-gray-400 text-[10px] md:text-[10px] lg:text-xs leading-relaxed">
                   View my experience & skills
                 </p>
               </div>
 
               {/* Download button with arrow animation */}
               <div className="flex items-center gap-2 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300">
-                <span className="text-xs font-semibold tracking-wide">Download</span>
-                <svg className="w-4 h-4 transform group-hover:translate-y-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <span className="text-[10px] md:text-[10px] lg:text-xs font-semibold tracking-wide">Download</span>
+                <svg className="w-3 h-3 md:w-3 md:h-3 lg:w-4 lg:h-4 transform group-hover:translate-y-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </div>
@@ -112,12 +112,12 @@ const Details = () => {
           </a>
 
           {/* Card 3 - Tech Stack Animation */}
-          <div className="detail-card md:col-span-6 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm p-8 hover:border-cyan-500/30 transition-all duration-500">
+          <div className="detail-card md:col-span-6 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm p-4 md:p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-500">
             <div className="relative z-10 h-full flex items-center justify-between gap-6">
               {/* Left side - Text */}
               <div className="flex-1 min-w-0">
-                <p className="text-slate-400 text-xs md:text-sm mb-2 font-medium tracking-wide">I constantly try to improve</p>
-                <h3 className="text-white text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
+                <p className="text-slate-400 text-[10px] md:text-[10px] lg:text-sm mb-2 font-medium tracking-wide">I constantly try to improve</p>
+                <h3 className="text-white text-lg md:text-xl lg:text-3xl font-bold leading-tight">
                   My tech stack
                 </h3>
               </div>
@@ -125,26 +125,26 @@ const Details = () => {
               {/* Right side - Floating Tech Boxes */}
               <div className="relative w-[240px] md:w-[280px] h-[160px] flex-shrink-0">
                 {/* React Box - Top Right */}
-                <div className="tech-box absolute top-0 right-0 bg-slate-800/80 backdrop-blur-md border border-slate-600/40 rounded-lg px-3 py-2 shadow-xl animate-float-1 hover:border-cyan-400/60 group cursor-pointer">
-                  <span className="text-white font-semibold text-xs md:text-sm tracking-wide group-hover:text-cyan-400 transition-colors duration-300">React</span>
+                <div className="tech-box absolute top-0 right-0 bg-slate-800/80 backdrop-blur-md border border-slate-600/40 rounded-lg px-2 md:px-2 lg:px-3 py-1.5 md:py-1.5 lg:py-2 shadow-xl animate-float-1 hover:border-cyan-400/60 group cursor-pointer">
+                  <span className="text-white font-semibold text-[10px] md:text-[10px] lg:text-sm tracking-wide group-hover:text-cyan-400 transition-colors duration-300">React</span>
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/5 group-hover:to-blue-500/5 transition-all duration-300"></div>
                 </div>
                 
                 {/* JavaScript Box - Top Left */}
-                <div className="tech-box absolute top-4 right-28 bg-slate-800/80 backdrop-blur-md border border-slate-600/40 rounded-lg px-3 py-2 shadow-xl animate-float-2 hover:border-yellow-400/60 group cursor-pointer">
-                  <span className="text-white font-semibold text-xs md:text-sm tracking-wide group-hover:text-yellow-400 transition-colors duration-300">JavaScript</span>
+                <div className="tech-box absolute top-4 right-28 bg-slate-800/80 backdrop-blur-md border border-slate-600/40 rounded-lg px-2 md:px-2 lg:px-3 py-1.5 md:py-1.5 lg:py-2 shadow-xl animate-float-2 hover:border-yellow-400/60 group cursor-pointer">
+                  <span className="text-white font-semibold text-[10px] md:text-[10px] lg:text-sm tracking-wide group-hover:text-yellow-400 transition-colors duration-300">JavaScript</span>
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-yellow-500/0 to-yellow-500/0 group-hover:from-yellow-500/5 group-hover:to-orange-500/5 transition-all duration-300"></div>
                 </div>
                 
                 {/* ThreeJS Box - Middle Right */}
-                <div className="tech-box absolute top-[55%] -translate-y-1/2 right-2 bg-slate-800/80 backdrop-blur-md border border-slate-600/40 rounded-lg px-3 py-2 shadow-xl animate-float-3 hover:border-purple-400/60 group cursor-pointer">
-                  <span className="text-white font-semibold text-xs md:text-sm tracking-wide group-hover:text-purple-400 transition-colors duration-300">Framer</span>
+                <div className="tech-box absolute top-[55%] -translate-y-1/2 right-2 bg-slate-800/80 backdrop-blur-md border border-slate-600/40 rounded-lg px-2 md:px-2 lg:px-3 py-1.5 md:py-1.5 lg:py-2 shadow-xl animate-float-3 hover:border-purple-400/60 group cursor-pointer">
+                  <span className="text-white font-semibold text-[10px] md:text-[10px] lg:text-sm tracking-wide group-hover:text-purple-400 transition-colors duration-300">Framer</span>
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/5 group-hover:to-pink-500/5 transition-all duration-300"></div>
                 </div>
                 
                 {/* NextJS Box - Bottom Center-Left */}
-                <div className="tech-box absolute bottom-2 right-24 bg-slate-800/80 backdrop-blur-md border border-slate-600/40 rounded-lg px-3 py-2 shadow-xl animate-float-4 hover:border-slate-300/60 group cursor-pointer">
-                  <span className="text-white font-semibold text-xs md:text-sm tracking-wide group-hover:text-slate-300 transition-colors duration-300">NextJS</span>
+                <div className="tech-box absolute bottom-2 right-24 bg-slate-800/80 backdrop-blur-md border border-slate-600/40 rounded-lg px-2 md:px-2 lg:px-3 py-1.5 md:py-1.5 lg:py-2 shadow-xl animate-float-4 hover:border-slate-300/60 group cursor-pointer">
+                  <span className="text-white font-semibold text-[10px] md:text-[10px] lg:text-sm tracking-wide group-hover:text-slate-300 transition-colors duration-300">NextJS</span>
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-slate-400/0 to-slate-400/0 group-hover:from-slate-400/5 group-hover:to-slate-500/5 transition-all duration-300"></div>
                 </div>
               </div>
@@ -166,7 +166,7 @@ const Details = () => {
           </div>
 
           {/* Combined Design Elements Card */}
-          <div className="detail-card md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm p-8 hover:border-cyan-500/30 transition-all duration-500 group">
+          <div className="detail-card md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm p-4 md:p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-500 group">
             {/* Animated gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-cyan-600/0 to-gray-900/0 group-hover:from-cyan-500/10 group-hover:via-cyan-600/5 group-hover:to-gray-900/10 transition-all duration-700"></div>
             
@@ -174,7 +174,7 @@ const Details = () => {
               {/* Top section - Number with pulse effect */}
               <div className="flex items-center justify-between mb-6">
                 <div className="relative">
-                  <span className="text-4xl md:text-5xl font-black text-white group-hover:text-cyan-50 transition-colors duration-300 animate-number-pulse">01</span>
+                  <span className="text-3xl md:text-3xl lg:text-5xl font-black text-white group-hover:text-cyan-50 transition-colors duration-300 animate-number-pulse">01</span>
                   <div className="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full"></div>
                 </div>
                 
@@ -189,7 +189,7 @@ const Details = () => {
               {/* Middle section - Typography */}
               <div className="flex-1 flex items-center justify-center py-6">
                 <div className="relative">
-                  <span className="text-3xl md:text-4xl font-black text-white group-hover:scale-110 transition-transform duration-500 inline-block">Quality &gt; Quantity</span>
+                  <span className="text-2xl md:text-2xl lg:text-4xl font-black text-white group-hover:scale-110 transition-transform duration-500 inline-block">Quality &gt; Quantity</span>
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </div>
@@ -208,7 +208,7 @@ const Details = () => {
           </div>
 
           {/* New Interactive Projects Card */}
-          <div className="detail-card md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm p-8 hover:border-cyan-500/30 transition-all duration-500 group">
+          <div className="detail-card md:col-span-3 md:row-span-2 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm p-4 md:p-6 lg:p-8 hover:border-cyan-500/30 transition-all duration-500 group">
             {/* Animated mesh gradient background */}
             <div className="absolute inset-0 opacity-30">
               <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-blob"></div>
@@ -226,7 +226,7 @@ const Details = () => {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 self-start px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-full">
                 <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
-                <span className="text-cyan-400 text-[10px] font-bold tracking-widest">PROJECTS</span>
+                <span className="text-cyan-400 text-[10px] font-bold tracking-widest card-subtitle">PROJECTS</span>
               </div>
 
               {/* Main content */}
@@ -238,9 +238,9 @@ const Details = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                       </svg>
                     </div>
-                    <span className="text-white text-4xl md:text-5xl font-black group-hover:text-cyan-50 transition-colors duration-300">5+</span>
+                    <span className="text-white text-3xl md:text-3xl lg:text-5xl font-black group-hover:text-cyan-50 transition-colors duration-300">5+</span>
                   </div>
-                  <p className="text-gray-400 text-sm md:text-base">Completed Projects</p>
+                  <p className="text-gray-400 text-xs md:text-xs lg:text-base">Completed Projects</p>
                 </div>
 
                 {/* Progress bars */}

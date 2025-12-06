@@ -9,6 +9,13 @@
   --sidebar-width: 7rem;
 }
 
+/* Mobile: Remove sidebar width for screens 425px and below */
+@media (max-width: 425px) {
+  :root {
+    --sidebar-width: 0;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -143,6 +150,80 @@ body {
 @media (max-width: 900px) {
   .hero-orb { width: 360px; height: 360px; right: 2rem; }
   h1 { font-size: 3.2rem; }
+}
+
+/* Tablet responsive - 768px specific tweaks for detail cards */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Text sizing for all cards */
+  .card-title {
+    font-size: 0.875rem !important; /* 14px */
+    line-height: 1.25rem !important;
+  }
+  
+  .card-subtitle {
+    font-size: 0.625rem !important; /* 10px */
+    line-height: 0.875rem !important;
+  }
+  
+  .card-description {
+    font-size: 0.75rem !important; /* 12px */
+    line-height: 1rem !important;
+  }
+  
+  .card-large-text {
+    font-size: 1.5rem !important; /* 24px */
+    line-height: 2rem !important;
+  }
+  
+  .card-number {
+    font-size: 2rem !important; /* 32px */
+    line-height: 2.5rem !important;
+  }
+  
+  /* Tech box specific sizing */
+  .tech-box span {
+    font-size: 0.75rem !important; /* 12px */
+    padding: 0.375rem 0.625rem !important; /* 6px 10px */
+  }
+  
+  /* Reduce padding for better fit */
+  .detail-card {
+    padding: 1.25rem !important; /* 20px instead of 32px */
+  }
+  
+  /* Adjust spacing between elements */
+  .space-y-3 > * + * {
+    margin-top: 0.5rem !important;
+  }
+  
+  .space-y-6 > * + * {
+    margin-top: 1rem !important;
+  }
+  
+  /* Specific overrides for responsive Tailwind classes */
+  .md\:text-lg {
+    font-size: 0.875rem !important;
+  }
+  
+  .md\:text-xl {
+    font-size: 1.125rem !important;
+  }
+  
+  .md\:text-2xl {
+    font-size: 1.5rem !important;
+  }
+  
+  .md\:text-3xl {
+    font-size: 1.75rem !important;
+  }
+  
+  .md\:text-4xl {
+    font-size: 2rem !important;
+  }
+  
+  .md\:text-5xl {
+    font-size: 2rem !important;
+  }
 }
 
 /* Button utilities and animations for hero CTAs */
@@ -637,5 +718,105 @@ body {
 
 .animate-bounce-slow {
   animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Mobile responsive - 320px and below for all page headings */
+@media (max-width: 320px) {
+  /* Main hero heading (Home page) */
+  h1 {
+    font-size: 2rem !important; /* 32px */
+    line-height: 1.1 !important;
+  }
+  
+  /* All section headings h2 */
+  h2 {
+    font-size: 1.75rem !important; /* 28px - reduced from various sizes */
+    line-height: 1.2 !important;
+  }
+  
+  /* About section large heading */
+  .text-6xl,
+  .text-7xl,
+  .text-8xl {
+    font-size: 2rem !important; /* 32px */
+  }
+  
+  /* Projects section - project numbers */
+  .text-6xl.text-accent,
+  .text-7xl.text-accent {
+    font-size: 2.5rem !important; /* 40px */
+  }
+  
+  /* Projects section - project titles */
+  .text-4xl {
+    font-size: 1.5rem !important; /* 24px */
+  }
+  
+  /* Skills section heading */
+  .text-5xl {
+    font-size: 1.75rem !important; /* 28px */
+  }
+  
+  /* Skills section category headings */
+  .text-3xl {
+    font-size: 1.25rem !important; /* 20px */
+  }
+  
+  /* Contact section background text */
+  .bg-text {
+    font-size: 3rem !important; /* 48px - much smaller for mobile */
+  }
+  
+  /* Subtitle/intro text on home page */
+  .typewriter {
+    font-size: 0.75rem !important; /* 12px */
+  }
+  
+  /* All paragraph descriptions */
+  p {
+    font-size: 0.875rem !important; /* 14px */
+  }
+  
+  /* Text base class */
+  .text-base {
+    font-size: 0.875rem !important; /* 14px */
+  }
+  
+  /* Text large */
+  .text-lg {
+    font-size: 0.875rem !important; /* 14px */
+  }
+  
+  /* Text extra large */
+  .text-xl {
+    font-size: 1rem !important; /* 16px */
+  }
+  
+  /* Text 2xl */
+  .text-2xl {
+    font-size: 1.125rem !important; /* 18px */
+  }
+  
+  /* Button text sizing */
+  .btn-ghost,
+  .btn-cta {
+    font-size: 0.75rem !important; /* 12px */
+    padding: 0.75rem 1.5rem !important; /* Adjust padding for smaller text */
+  }
+  
+  /* Availability pill text */
+  .text-sm {
+    font-size: 0.75rem !important; /* 12px */
+  }
+  
+  /* Extra small text */
+  .text-xs {
+    font-size: 0.625rem !important; /* 10px */
+  }
+  
+  /* Muted foreground text in descriptions */
+  .text-muted-foreground {
+    font-size: 0.875rem !important; /* 14px */
+  }
 }
 

@@ -35,14 +35,14 @@ export default function Home() {
 
         {/* <p className="text-sm tracking-widest mb-6 reveal reveal-delay-0" style={{ color: 'var(--muted-foreground)' }}>FRONTEND WEB DEVELOPER</p> */}
 
-        <h1 className="mx-auto text-[3.6rem] md:text-[5.5rem] leading-[1.02] font-extrabold text-white max-w-[1100px] reveal reveal-delay-1">
-          Crafting Clean & Impactful
+        <h1 className="mx-auto text-[2.5rem] min-[426px]:text-[3.6rem] md:text-[5.5rem] leading-[1.1] min-[426px]:leading-[1.02] font-extrabold text-white max-w-[1100px] reveal reveal-delay-1">
+          Crafting Clean &<br className="max-[425px]:inline hidden min-[426px]:hidden" /> Impactful
           <br />
          <span className="bg-clip-text text-transparent reveal reveal-delay-2" style={{ backgroundImage: 'linear-gradient(90deg,var(--accent),#00bcd4)' }}>User Experiences</span>
         </h1>
 
-        <p className="mt-8 text-gray-300 text-xl md:text-2xl max-w-3xl mx-auto reveal reveal-delay-3">
-          <span className="typewriter">Hi! I&apos;m Chirag Bhandar , Frontend Web Developer...</span>
+        <p className="mt-8 text-gray-300 text-sm min-[376px]:text-base min-[426px]:text-xl md:text-2xl max-w-3xl mx-auto reveal reveal-delay-3">
+          <span className="typewriter">Hi! I&apos;m Chirag Bhandar<span className="max-[375px]:inline hidden min-[376px]:hidden">,</span><br className="max-[375px]:inline hidden min-[376px]:hidden" /><span className="min-[376px]:inline hidden">, </span>Frontend Web Developer...</span>
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-4">
