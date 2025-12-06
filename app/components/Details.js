@@ -66,8 +66,8 @@ const Details = () => {
 
           {/* Card 2 - Resume Download Card */}
           <a 
-            href="/resume.pdf" 
-            download="Resume.pdf"
+            href="/Chirag-Resume.pdf" 
+            download="Chirag-Resume.pdf"
             className="detail-card md:col-span-3 relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900/40 via-slate-900/50 to-slate-950/50 backdrop-blur-sm p-6 hover:border-cyan-400/50 transition-all duration-500 group cursor-pointer"
           >
             {/* Animated background gradient */}

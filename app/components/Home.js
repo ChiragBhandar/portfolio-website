@@ -52,10 +52,10 @@ export default function Home() {
             <span className="btn-arrow" aria-hidden>➜</span>
           </a>
 
-          <a href="#contact" aria-label="Contact me" className="group btn-cta inline-block rounded-xl px-8 py-4 text-sm md:text-base text-black fade-up reveal reveal-delay-4" style={{ boxShadow: '0 10px 40px rgba(0,188,212,0.12)' }}>
+          <a href="/Chirag-Resume.pdf" download="Chirag-Resume.pdf" aria-label="Download my resume" className="group btn-cta inline-block rounded-xl px-8 py-4 text-sm md:text-base text-black fade-up reveal reveal-delay-4" style={{ boxShadow: '0 10px 40px rgba(0,188,212,0.12)' }}>
             <span>My Resume</span>
             &nbsp;
-            <span className="btn-arrow" aria-hidden>✉️</span>
+            <span className="btn-arrow" aria-hidden>📄</span>
           </a>
         </div>
         
