@@ -14,10 +14,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://chiragbhandar.vercel.app'),
   title: "Chirag Bhandar - Portfolio",
   description: "Portfolio website of Chirag Bhandar, a software developer specializing in frontend web development and design.",
   icons: {
     icon: "/favicon.png",
+  },
+  openGraph: {
+    title: "Chirag Bhandar - Portfolio",
+    description: "Portfolio website of Chirag Bhandar, a software developer specializing in frontend web development and design.",
+    url: "https://chiragbhandar.vercel.app",
+    siteName: "Chirag Bhandar Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chirag Bhandar - Portfolio",
+    description: "Portfolio website of Chirag Bhandar, a software developer specializing in frontend web development and design.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
