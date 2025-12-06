@@ -35,7 +35,7 @@ npm run build
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the website.
+Open [http://localhost:3000](https://chirag-bhandar.vercel.app/) to view the website.
 
 ## Features
 
